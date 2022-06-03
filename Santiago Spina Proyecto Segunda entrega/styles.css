@@ -1,0 +1,186 @@
+
+header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background: lightslategray;
+  height: 6rem;
+}
+
+#tituloEmpresa {
+  color: whitesmoke;
+  margin: 0 0;
+}
+
+
+.menu ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 270px;
+}
+
+.menu ul li{
+  padding: 0 3rem;
+  list-style: none;
+}
+
+.menu ul li a{
+  text-decoration: none;
+  color: whitesmoke;
+  
+}
+
+.heroContent{
+  height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgSlides{
+  width: 500px;
+  height: 500px;
+  margin: 40px;
+}
+
+
+
+
+
+#contenedorCards {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  margin: 4rem;
+}
+
+
+.dark{
+  background-color: rgb(33, 33, 49);
+  color: white;
+}
+
+.light{
+  color: black;
+}
+
+
+.botones{
+  border-radius: 5px;
+  background: rgb(193, 198, 203);
+  margin-left: 80px;
+}
+
+
+#contenedorCards {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.card {
+  width: 330px;
+  height: 430px;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  margin: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: all 0.25s;
+}
+
+.card:hover{
+  transform: translateY(-15px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img{
+  width: 70%;
+}
+
+.card h4{
+  font-weight: 600;
+  color: black !important;
+}
+
+.card h5{
+  color: black !important;
+}
+
+.card p{
+  padding: 0 1rem;
+  font-size: 16px;
+  font-weight: 300;
+  color: black !important;
+}
+
+.card a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #3498db;
+}
+
+
+
+
+
+/* Footer */
+
+footer {
+  background: cornflowerblue;
+  display: flex;
+  justify-content: space-evenly;
+  height: 150px; }
+
+.copyright {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+.containerRedes {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+.containerRedes ul li {
+  display: inline-block;
+  margin: 0 5px;
+  width: 50px;
+  height: 50px;
+  text-align: center; }
+.containerRedes ul li a {
+  display: block;
+  padding: 0 10px;
+  background: grey;
+  color: white;
+  line-height: 50px;
+  font-size: 18px;
+  transition: .2s; }
+
+.containerRedes ul:hover a {
+  filter: blur(2px); }
+
+.containerRedes ul {
+  display: flex;
+  padding: 20px; }
+.containerRedes ul li a:hover {
+  transform: translateY(-3px) scale(1.1);
+  filter: none; }
+.containerRedes ul li .facebook:hover {
+  background: #4267b2; }
+.containerRedes ul li .instagram:hover {
+  background: #c13584; }
+.containerRedes ul li .twitter:hover {
+  background: #1da1f2; }
+.containerRedes ul li .linkedin:hover {
+  background: #2867b2; }

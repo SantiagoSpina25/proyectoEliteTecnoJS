@@ -1,0 +1,43 @@
+
+const procesadores = [
+  {
+      id : "0",
+      modelo : "Ryzen 5 3600",
+      marca : "AMD",
+      frecuencia : "4.2GHz",
+      precio : 32200,
+      img: "../img/ryzen-5-3600img.jpg",
+  },
+  {
+      id : "1",
+      modelo : "Ryzen 7 5800X",
+      marca : "AMD",
+      frecuencia : "4.7GHz",
+      precio : 54149,
+      img: "../img/ryzen-7-5800ximg.png",
+  },
+  {
+      id : "2",
+      modelo : "i3 12100",
+      marca : "Intel",
+      frecuencia : "4.3GHz",
+      precio : 23371,
+      img: "../img/i3-12100img.jpg",
+  },
+  {
+      id : "3",
+      modelo : "Pentium Gold G7400",
+      marca : "intel",
+      frecuencia : "3.7GHz",
+      precio : 12378,
+      img: "../img/Pentium-Gold-G7400img.jpg",
+  },
+  {
+      id : "4",
+      modelo : "Ryzen 5 1600",
+      marca : "AMD",
+      frecuencia : "3.2GHz",
+      precio : 32331,
+      img: "../img/Ryzen 5-1600img.jpg",
+  },
+];
