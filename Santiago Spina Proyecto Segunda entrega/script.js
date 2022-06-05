@@ -1,24 +1,61 @@
 
 
-let carrito = []
+
+let carrito;
+
 let tablaProductos = document.getElementById("tablaProductos");
 
-// if(localStorage.getItem("carrito")){
-//   carrito = JSON.parse(localStorage.getItem("carrito"))
 
-//   for(const productoEnCarrito of carrito){
-//     tablaProductos.innerHTML += `
-//     <tr>
-//       <td>${productoNuevo.id}</td>
-//       <td>${productoNuevo.modelo}</td>
-//       <td>$${productoNuevo.precio}</td>
-//     </tr>`
-//   }
+// Se pregunta si hay productos o en el carrito, si lo hay, se traen los productos del storage y se agregan a la tabla, de lo contrario se crea un array vacio
 
-// }
-// else{
-//   carrito = []
-// }
+if(localStorage.getItem("carrito")!=null){
+  carrito=JSON.parse(localStorage.getItem("carrito"));
+
+  actualizarTablaCarrito();
+
+
+}else{
+  carrito=[];
+}
+
+
+//Funcion para agregar productos del storage a la tabla
+
+function actualizarTablaCarrito(){
+
+for(const producto of carrito){
+  tablaProductos.innerHTML += `
+  <tr>
+    <td>${producto.id}</td>
+    <td>${producto.modelo}</td>
+    <td>$${producto.precio}</td>
+  </tr>`
+}
+
+
+}
+
+let botonVaciarCarrito = document.getElementById("botonVaciarCarrito")
+
+botonVaciarCarrito.onclick=()=>{
+  carrito = []
+  tablaProductos.innerHTML = ""
+  localStorage.removeItem("carrito")
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -68,7 +105,7 @@ function imprimirProductos(){
   for (const procesador of procesadores){
     let card = document.createElement("div");
 
-    card.innerHTML = `
+    card.innerHTML += `
     <div class="card">
       <img src="${procesador.img}">
       <h4>${procesador.marca} ${procesador.modelo}</h4>
@@ -93,6 +130,7 @@ imprimirProductos();
 //Funcion para pushear productos al carrito y mostrarlos en pantalla 
 
 function agregarProducto(productoNuevo){
+
   carrito.push(productoNuevo)
   console.table(carrito)
 
@@ -106,48 +144,3 @@ function agregarProducto(productoNuevo){
   localStorage.setItem("carrito", JSON.stringify(carrito))
 }
 
-
-
-
-
-
-
-
-//Funcion para obtener el precio total de la compra
-            
-// function obtenerPrecioTotal() {
-
-//   for (const productoEnCarrito of carrito) {
-//     precioTotal += productoEnCarrito.precio;
-//   }
-              
-//   return precioTotal;  
-// }
-
-// obtenerPrecioTotal()
-
-              
-
-             
-
-// class Procesador {
-//   constructor(procesador) {
-//     this.id = procesador.id
-//     this.modelo  = procesador.modelo;
-//     this.precio  = procesador.precio;
-//     this.marca = procesador.marca;
-//     this.cantidad = 1;
-//     this.precioTotal = procesador.precio;
-      
-//   }
-
-//   agregarUnidad(){
-//     this.cantidad ++;
-//   }
-
-//   actualizarPrecioTotal() {
-//     this.precioTotal = this.precio * this.cantidad;
-//   }
-
-
-// }
