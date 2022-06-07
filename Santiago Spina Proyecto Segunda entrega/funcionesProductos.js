@@ -65,14 +65,24 @@ let botonCompletarCompra = document.getElementById("botonCompletarCompra")
 botonCompletarCompra.onclick=()=>{
 
   if (localStorage.getItem("carrito")){
-    alert("Compra finalizada, Muchas gracias!");
+    // alert("Compra finalizada, Muchas gracias!");
+    swal({
+      title: "Compra finalizada!",
+      text: "Muchas gracias!",
+      icon: "success",
+    });
     carrito = []
     tablaProductos.innerHTML = ""
     localStorage.removeItem("carrito")
     console.clear()
   }
   else{
-    alert("No hay productos en el carrito!")
+    // alert("No hay productos en el carrito!")
+    swal({
+      title: "No hay productos en el carrito!",
+      text: "Intentalo de nuevo",
+      icon: "error",
+    });
     
   }  
 }
