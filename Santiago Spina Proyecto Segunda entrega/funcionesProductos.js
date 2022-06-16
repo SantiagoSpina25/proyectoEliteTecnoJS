@@ -1,6 +1,6 @@
 
-
 let carrito;
+let productosEnJson= [];
 let tablaProductos = document.getElementById("tablaProductos");
 
 
@@ -17,7 +17,7 @@ let contenedorCards = document.getElementById("contenedorCards");
 
 function imprimirProductos(){
   
-  for (const procesador of procesadores){
+  for (const procesador of productosEnJson){
     let card = document.createElement("div");
     
     card.innerHTML += `
@@ -33,13 +33,11 @@ function imprimirProductos(){
     contenedorCards.appendChild(card);
   }
   
-  procesadores.forEach(procesador => {
+  productosEnJson.forEach(procesador => {
     document.getElementById(`btnAgregar${procesador.id}`).addEventListener("click", () => agregarProducto(procesador))
   });
   
 }
-
-imprimirProductos();
 
 
 
@@ -123,3 +121,15 @@ function agregarProducto(productoNuevo){
 
   localStorage.setItem("carrito", JSON.stringify(carrito))
 }
+
+
+//Funcion para obtener la informacion de los productos en productos.json
+
+async function obtenerJSON() {
+  const resp=await fetch("productos.json")
+  const data= await resp.json()
+  productosEnJson = data;
+  ImprimirProductos();
+}
+
+obtenerJSON();

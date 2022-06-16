@@ -54,14 +54,6 @@ header {
 }
 
 
-.dark{
-  background-color: rgb(33, 33, 49);
-  color: white; 
-}
-
-.light{
-  color: black;
-}
 
 
 .botones{
@@ -141,6 +133,22 @@ header {
 }
 
 
+
+/* Dark mode */
+
+.dark{
+  background-color: rgb(33, 33, 49);
+  color: white; 
+}
+
+.light{
+  color: black;
+}
+
+
+
+
+
 /* Footer */
 
 footer {
@@ -148,14 +156,14 @@ footer {
   display: flex;
   justify-content: space-evenly;
   height: 150px; }
-
+  
 .copyright {
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column; }
-
+    
 .containerRedes {
   display: flex;
   justify-content: center;
@@ -173,11 +181,9 @@ footer {
   color: white;
   line-height: 50px;
   font-size: 18px;
-  transition: .2s; }
-
+  transition: .2s; }         
 .containerRedes ul:hover a {
-  filter: blur(2px); }
-
+  filter: blur(2px); } 
 .containerRedes ul {
   display: flex;
   padding: 20px; }
