@@ -1,6 +1,6 @@
 [
   {
-      "id" : "0",
+      "id" : 0,
       "modelo" : "Ryzen 5 3600",
       "marca" : "AMD",
       "frecuencia" : "4.2GHz",
@@ -8,7 +8,7 @@
       "img": "../img/ryzen-5-3600img.jpg"
   },
   {
-      "id" : "1",
+      "id" : 1,
       "modelo" : "Ryzen 7 5800X",
       "marca" : "AMD",
       "frecuencia" : "4.7GHz",
@@ -16,7 +16,7 @@
       "img": "../img/ryzen-7-5800ximg.png"
   },
   {
-      "id" : "2",
+      "id" : 2,
       "modelo" : "i3 12100",
       "marca" : "Intel",
       "frecuencia" : "4.3GHz",
@@ -24,7 +24,7 @@
       "img": "../img/i3-12100img.jpg"
   },
   {
-      "id" : "3",
+      "id" : 3,
       "modelo" : "Pentium Gold G7400",
       "marca" : "intel",
       "frecuencia" : "3.7GHz",
@@ -32,7 +32,7 @@
       "img": "../img/Pentium-Gold-G7400img.jpg"
   },
   {
-      "id" : "4",
+      "id" : 4,
       "modelo" : "Ryzen 5 1600",
       "marca" : "AMD",
       "frecuencia" : "3.2GHz",

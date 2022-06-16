@@ -126,10 +126,10 @@ function agregarProducto(productoNuevo){
 //Funcion para obtener la informacion de los productos en productos.json
 
 async function obtenerJSON() {
-  const resp=await fetch("productos.json")
+  const resp= await fetch("/productos.json")
   const data= await resp.json()
   productosEnJson = data;
-  ImprimirProductos();
+  imprimirProductos();
 }
 
 obtenerJSON();
