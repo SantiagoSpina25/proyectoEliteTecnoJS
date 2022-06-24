@@ -1,10 +1,22 @@
 
 let carrito;
 let productosEnJson= [];
-let tablaProductos = document.getElementById("tablaProductos");
 
 
-// Se pregunta si hay productos o en el carrito, si lo hay, se traen los productos del storage y se agregan a la tabla, de lo contrario se crea un array vacio
+class Procesadores {
+  constructor(procesador){
+    this.id = procesador.id;
+    this.img = procesador.img;
+    this.modelo= procesador.modelo;
+    this.marca= procesador.marca
+    this.precio= procesador.precio
+    this.cantidad = 1;
+  }
+}
+
+
+
+// Se pregunta si hay productos o no en el carrito, si los hay, se traen los productos del storage y se agregan a la tabla, de lo contrario se crea un array vacio
 
 
 localStorage.getItem("carrito")!=null ? (carrito=JSON.parse(localStorage.getItem("carrito")),  actualizarTablaCarrito() ) : carrito=[];
@@ -51,9 +63,10 @@ let botonVaciarCarrito = document.getElementById("botonVaciarCarrito")
 botonVaciarCarrito.onclick=()=>{
   carrito = []
   tablaProductos.innerHTML = ""
+  precioTotalTxt.innerText = ""
   localStorage.removeItem("carrito")
   console.clear()
-  
+
 }
 
 // Completar compra
@@ -71,6 +84,7 @@ botonCompletarCompra.onclick=()=>{
     });
     carrito = []
     tablaProductos.innerHTML = ""
+    precioTotalTxt.innerText = ""
     localStorage.removeItem("carrito")
     console.clear()
   }
@@ -104,21 +118,35 @@ for(const producto of carrito){
 
 }
 
+let precioTotalTxt = document.getElementById("precioTotalTxt")
 
 //Funcion para pushear productos al carrito y mostrarlos en pantalla 
 
 function agregarProducto(productoNuevo){
 
-  carrito.push(productoNuevo)
-  console.table(carrito)
+  let productoEncontrado = carrito.find(e => e.id == productoNuevo.id);
 
-  tablaProductos.innerHTML += `
-  <tr>
-    <td>${productoNuevo.id}</td>
-    <td>${productoNuevo.modelo}</td>
-    <td>$${productoNuevo.precio}</td>
-  </tr>`
+  if(productoEncontrado == undefined){
+    let productoACarrito = new Procesadores(productoNuevo);
+    carrito.push(productoACarrito);
 
+    let tablaProductos = document.getElementById("tablaProductos");
+  
+    tablaProductos.innerHTML += `
+    <tr>
+      <td>${productoACarrito.id}</td>
+      <td>${productoACarrito.modelo}</td>
+      <td>${productoACarrito.cantidad}
+      <td>$${productoACarrito.precio}</td>
+    </tr>`
+  }else{
+    let pos = carrito.findIndex(e => e.id == productoNuevo.id);
+    carrito[pos].cantidad ++;
+
+  }
+
+  precioTotalTxt.innerText=`Total de la compra: $ ${calcularTotal()}`;
+  
   localStorage.setItem("carrito", JSON.stringify(carrito))
 }
 
@@ -133,3 +161,15 @@ async function obtenerJSON() {
 }
 
 obtenerJSON();
+
+
+//Funcion para calcular el total
+
+function calcularTotal() {
+
+    let suma = 0;
+    for (const producto of carrito) {
+        suma = suma + (producto.precio * producto.cantidad);
+    }
+    return suma;
+}
