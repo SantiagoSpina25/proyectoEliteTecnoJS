@@ -1,6 +1,7 @@
 
-let carrito;
+let carrito =[];
 let productosEnJson= [];
+let precioTotalTxt = document.getElementById("precioTotalTxt")
 
 
 class Procesadores {
@@ -44,11 +45,21 @@ function imprimirProductos(){
     
     contenedorCards.appendChild(card);
   }
+
+  //Se agrega un evento en cada boton dinamicamente para agregar cada producto al carrito
   
   productosEnJson.forEach(procesador => {
-    document.getElementById(`btnAgregar${procesador.id}`).addEventListener("click", () => agregarProducto(procesador))
-  });
+    document.getElementById(`btnAgregar${procesador.id}`).addEventListener("click", function (e) {
+      e.preventDefault()
+      agregarProducto(procesador)
   
+      swal({
+        timer: 1000,
+        title: "Producto agregado al carrito !",
+        icon: "success"
+      });
+    })
+  });  
 }
 
 
@@ -65,7 +76,6 @@ botonVaciarCarrito.onclick=()=>{
   tablaProductos.innerHTML = ""
   precioTotalTxt.innerText = ""
   localStorage.removeItem("carrito")
-  console.clear()
 
 }
 
@@ -79,14 +89,13 @@ botonCompletarCompra.onclick=()=>{
     // alert("Compra finalizada, Muchas gracias!");
     swal({
       title: "Compra finalizada!",
-      text: "Muchas gracias!",
+      text: `Muchas gracias! El precio final de la compra es: $${calcularTotal()}`,
       icon: "success",
     });
     carrito = []
     tablaProductos.innerHTML = ""
     precioTotalTxt.innerText = ""
     localStorage.removeItem("carrito")
-    console.clear()
   }
   else{
     // alert("No hay productos en el carrito!")
@@ -95,7 +104,6 @@ botonCompletarCompra.onclick=()=>{
       text: "Intentalo de nuevo",
       icon: "error",
     });
-    
   }  
 }
 
@@ -108,17 +116,17 @@ function actualizarTablaCarrito(){
 
 for(const producto of carrito){
   tablaProductos.innerHTML += `
-  <tr>
+  <tr id=fila${producto.id}>
     <td>${producto.id}</td>
     <td>${producto.modelo}</td>
+    <td id= ${producto.id} >${producto.cantidad}</td>
     <td>$${producto.precio}</td>
+    <td> <button class='btn btn-light' onclick='borrarProducto(${producto.id})'>❌</button>
   </tr>`
+  precioTotalTxt.innerText=`Total de la compra: $ ${calcularTotal()}`;
+}
 }
 
-
-}
-
-let precioTotalTxt = document.getElementById("precioTotalTxt")
 
 //Funcion para pushear productos al carrito y mostrarlos en pantalla 
 
@@ -133,15 +141,18 @@ function agregarProducto(productoNuevo){
     let tablaProductos = document.getElementById("tablaProductos");
   
     tablaProductos.innerHTML += `
-    <tr>
+    <tr id=fila${productoACarrito.id}>
       <td>${productoACarrito.id}</td>
       <td>${productoACarrito.modelo}</td>
-      <td>${productoACarrito.cantidad}
+      <td id= ${productoACarrito.id} >${productoACarrito.cantidad}</td>
       <td>$${productoACarrito.precio}</td>
+      <td> <button class='btn btn-light' onclick='borrarProducto(${productoACarrito.id})'>❌</button>
     </tr>`
   }else{
     let pos = carrito.findIndex(e => e.id == productoNuevo.id);
-    carrito[pos].cantidad ++;
+    carrito[pos].cantidad += 1;
+
+    document.getElementById(productoNuevo.id).innerHTML = carrito[pos].cantidad;    
 
   }
 
@@ -172,4 +183,41 @@ function calcularTotal() {
         suma = suma + (producto.precio * producto.cantidad);
     }
     return suma;
+}
+
+//Funcion para ordenar los precios de los productos
+
+function ordenarProductos(){
+
+  let seleccionOrden = document.getElementById("seleccionOrden").value;
+  console.log(seleccionOrden)
+  
+  if (seleccionOrden == "menor"){
+    productosEnJson.sort(function(a, b) {
+    return a.precio - b.precio
+  });
+  }
+  else if (seleccionOrden == "mayor"){
+  productosEnJson.sort(function(a,b){
+    return b.precio - a.precio
+  });
+  }
+  contenedorCards.innerHTML=""
+  imprimirProductos()
+}
+
+document.getElementById("seleccionOrden").onchange=()=>ordenarProductos();
+
+
+
+//Funcion para borrar productos individualmente del carrito
+
+function borrarProducto(id){
+  let indice=carrito.findIndex(prod => prod.id==id);
+  carrito.splice(indice,1);
+  localStorage.setItem("carrito", JSON.stringify(carrito))
+  
+  let fila=document.getElementById(`fila${id}`);
+  document.getElementById("tablaProductos").removeChild(fila);
+  document.getElementById("precioTotalTxt").innerText=`Total de la compra: $ ${calcularTotal()}`;
 }

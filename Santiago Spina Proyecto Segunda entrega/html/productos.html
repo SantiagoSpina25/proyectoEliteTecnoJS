@@ -4,8 +4,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Productos</title>
+  <title>Elite Tecno - Productos</title>
+  <!--Bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <!--Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+  <!--AOS-->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!--CSS-->
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
@@ -23,6 +31,15 @@
   </header>
 
   <main id="main">
+    <div class="row">
+      <div class="col-md-2">
+          <select id="seleccionOrden" class="form-select" aria-label="Default select example">
+            <option value="Pordefault">Ordenar por: </option>
+            <option value="menor">Menor a mayor precio</option>
+            <option value="mayor">Mayor a menor precio</option>
+          </select>
+      </div>
+    </div>
     <div id="contenedorCards" >
 
       <!-- Productos -->
@@ -39,15 +56,16 @@
               <th scope="col">Producto</th>
               <th scope="col">Cantidad</th>
               <th scope="col">Precio</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody id="tablaProductos">
             <!-- Productos en el carrito -->
 
-            <div class="botonesTabla">
-              <button id="botonVaciarCarrito" class="btn btn-danger">Vaciar Carrito</button>
-              <button id="botonCompletarCompra" class="btn btn-success">Completar compra</button>
-            </div>
+          <div class="botonesTabla">
+            <button id="botonVaciarCarrito" class="btn btn-danger">Vaciar Carrito</button>
+            <button id="botonCompletarCompra" class="btn btn-success">Completar compra</button>
+          </div>
           </tbody>
         </table>
 
@@ -78,9 +96,23 @@
     </div>
 </footer>
 
+
+
+
+
+  <!--Logos redes sociales del footer-->
   <script src="https://kit.fontawesome.com/085c7df188.js" crossorigin="anonymous"></script>
+
+  <!--Bootstrap-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <!--Sweet Alert-->
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <!--AOS-->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!--Codigo-->
   <script src="../script.js"></script>
   <script src="../funcionesProductos.js"></script>
 </body>

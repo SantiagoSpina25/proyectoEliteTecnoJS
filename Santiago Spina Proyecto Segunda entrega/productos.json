@@ -38,5 +38,13 @@
       "frecuencia" : "3.2GHz",
       "precio" : 32331,
       "img": "../img/Ryzen 5-1600img.jpg"
+  },
+  {
+    "id" : 5,
+    "modelo" : "I9 9900k",
+    "marca" : "Intel",
+    "frecuencia" : "3.6GHz",
+    "precio" : 190000,
+    "img": "../img/i9-9900kimg.jpeg"
   }
 ]

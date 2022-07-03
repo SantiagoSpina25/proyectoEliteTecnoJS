@@ -8,9 +8,18 @@ header {
   height: 6rem;
 }
 
-#tituloEmpresa {
+#tituloHeader {
   color: whitesmoke;
   margin: 0 0;
+}
+
+.titulo{
+  font-size: 140px;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
 }
 
 
@@ -32,11 +41,12 @@ header {
   
 }
 
-.heroContent{
+.promociones{
   height: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .imgSlides{
@@ -54,7 +64,9 @@ header {
 }
 
 
-
+#seleccionOrden{
+  margin: 25px;
+}
 
 .botones{
   border-radius: 5px;
